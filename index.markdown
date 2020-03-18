@@ -1,24 +1,14 @@
---- 
+---
 title: Homepage
 layout: home
---- 
+---
 
 # Welcome to OSeMOSYS training kit
 
-Welcome to the training kit for OSeMOSYS teaching!
+## Module 1: Introduction
 
-The first purpose of this site is to host training and reference material.  
-The content is editable on [GitHub](https://github.com/nismod/nismod.github.io).
+This module contains an introduction to OSeMOSYS, linear optimisation and the basic concepts needed to built and energy system model.
 
+### Presentations:
 
-{% include intro.md %}
-
-{% include list_pages.html %}
-
-
-{% include list_files.html %}
-
-
-
-
-
+{% include presentations-list.html %}
