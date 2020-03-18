@@ -12,4 +12,4 @@ Presentations:
 1. my test presentation [link]({{ site.url }}/teaching_test_1/presentations/test_LS.html)
 1. Nismod Presentation [link]({{ site.url }}/teaching_test_1/presentations/nismod_presentation.html)
 
-1.  {% include presentations-list.html %}
+{% include presentations-list.html %}
