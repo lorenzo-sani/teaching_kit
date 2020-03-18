@@ -11,12 +11,9 @@ The first purpose of this site is to host training and reference material.
 The content is editable on [GitHub](https://github.com/nismod/nismod.github.io).
 
 
-{% include intro.md %}
-
-{% include list_pages.html %}
+{% include presentations-list.html %}
 
 
-{% include list_files.html %}
 
 
 
