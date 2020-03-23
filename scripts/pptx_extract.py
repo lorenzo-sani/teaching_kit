@@ -9,7 +9,7 @@ prs = Presentation("files/ppt_demo.pptx")
 
 # slide_num = len(prs.slides)  # to calculate slides number
 slide_text = []
-slide_text = ['---','\n','layout: presentation','\n','author: '+ prs.core_properties.author,'\n','title :' + prs.core_properties.title]
+slide_text = ['---','\n','layout: presentation','\n','author: '+ prs.core_properties.author,'\n','title: ' + prs.core_properties.title]
 
 for slide in prs.slides:
     slide_text.append("\n---\n#")  # new slide, new line, TITLE --- Append is used to add a value at the end of the string
@@ -36,6 +36,8 @@ file.close()
 
 # you save files with:
 # prs.save('test.pptx')
-                 
 
-    
+
+# transform table.py in one function and use it within the script to create a table
+# def read_table(): 
+#
