@@ -4,48 +4,38 @@ prs = Presentation("files/ppt_demo.pptx")
 
 # text_runs will be populated with a list of strings,
 # one for each text run in presentation
-text_runs = []
-text_runs = ['---','\n','layout: presentation']
+#text_runs = []
+
+
+# slide_num = len(prs.slides)  # to calculate slides number
+slide_text = []
+slide_text = ['---','\n','layout: presentation','\n','author: '+ prs.core_properties.author,'\n','title :' + prs.core_properties.title]
+
 for slide in prs.slides:
-    text_runs.append("\n---\n")
-    i=1
+    slide_text.append("\n---\n#")  # new slide, new line, TITLE --- Append is used to add a value at the end of the string
+    slide_text.append(slide.shapes.title.text)
+    slide_text.append("\n")
     for shape in slide.shapes:
-        if not shape.has_text_frame:
+        if shape.has_text_frame and not shape == slide.shapes.title:
+             for paragraph in shape.text_frame.paragraphs:
+                 slide_text.append("\n\n")
+                 for run in paragraph.runs:
+                     slide_text.append(run.text)
+        elif shape == slide.shapes.title:
             continue
-        for paragraph in shape.text_frame.paragraphs:
-            text_runs.append("\n\n")
-            for run in paragraph.runs:
-                if i==1:
-                    text_runs.append("# ")
-                    text_runs.append(run.text)
-                    i=i + 1
-                else: 
-                    text_runs.append(run.text)
-                    i=i + 1
+        else:
+            slide_text.append("***MISSING FIGURE*** insert manually \n")
+            continue
 
-                
 
-file = open("_presentations/pres.html","w")
-# file.write(repr(text_runs))
-# file.close()
+file = open("_presentations/"+prs.core_properties.title+".html","w")
 
-for text_run in range(len(text_runs)):
-    file.write(text_runs[text_run]),
+for runs in range(len(slide_text)):
+    file.write(slide_text[runs]),
 file.close()
-# print(text_runs[0:])
-
 
 # you save files with:
 # prs.save('test.pptx')
                  
-
-#    def run_my_code(arguments):
- #       # <do something with arguments>
-  #      print(arguments)
-   #     return 0
-
-#    if __name__ == '__main__':
- #       args = sys.argv[1:]
-  #      run_my_code(args)
 
     
