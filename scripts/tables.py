@@ -16,19 +16,18 @@ for slide in prs.slides:
     for shape in slide.shapes:
         if shape.has_table:
            tab=shape.table
-           # print("there is a table in slide ",n)
            rows=tab.rows
            n_rows=len(rows)
            col=tab.columns
            n_col=len(col)
-           # print(n_rows,n_col)
-           # cell=tab.cell(1,1)
-           # print(cell.text)
            for r in range(n_rows):
                text_runs.append("\n |")
                for c in range(n_col):
-                   text_runs.append(tab.cell(r,c).text+" |")
-                  
+                   if r == 1 and c == 0: # this step is needed to add the intermediate row 
+                       text_runs.append(":---|---:| ---:| ---:| ---:|\n")
+                       text_runs.append(" |"+tab.cell(r,c).text+" |")
+                   else:
+                       text_runs.append(tab.cell(r,c).text+" |")   
         else:
             continue 
 
@@ -37,7 +36,5 @@ file = open("_presentations/table_"+prs.core_properties.title+".html","w")
 for runs in range(len(text_runs)):
     file.write(text_runs[runs]),
 file.close()
-
-
 
 
