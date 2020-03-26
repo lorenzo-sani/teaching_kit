@@ -13,8 +13,3 @@ This module contains an introduction to OSeMOSYS, linear optimisation and the ba
 
 {% include presentations-list.html %}
 
-
-![image.png](presentations/figures/image.png){:height="700px" width="400px"}
-
-
-![image.png](presentations/figures/image.png){:height="350px" width="200px"}
