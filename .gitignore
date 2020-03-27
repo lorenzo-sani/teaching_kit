@@ -3,3 +3,9 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+.vscode
+scripts/figure.py
+scripts/tables.py
+scripts/pptx_extract_shapes.py
+scripts/test.py
+
