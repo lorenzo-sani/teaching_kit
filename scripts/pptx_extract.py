@@ -1,10 +1,13 @@
-def pptx_extract(pres_name):    
+def pptx_extract(path,filename):    
     
     from pptx import Presentation
     from figure_extract import figure_extract
     from table_extract import table_extract
 
-    prs = Presentation(pres_name)
+    from pathlib import Path
+
+
+    prs = Presentation(path+"/"+filename)
 
     image_type_plc = Presentation("files/ppt_presentations/ppt_figure.pptx").slides[0].placeholders[1] #needed to identify when one placeholder is a picture
     image_type_shp = Presentation("files/ppt_presentations/ppt_figure.pptx").slides[0].shapes[4] #needed to identify when one placeholder is a picture
@@ -13,9 +16,12 @@ def pptx_extract(pres_name):
     n=0
 
     author = prs.core_properties.author
-    title = prs.core_properties.title
+    #title = prs.core_properties.title
+    title = filename
     slide_text = ['---','\n','layout: presentation','\n','author: ', author,'\n','title: ',title]
-    
+
+    Path("_presentations/figures/"+title).mkdir(parents=True, exist_ok=True) #check if destination folder for pictures exists and/or creates it
+
     for slide in prs.slides:
         slide_text.append("\n---\n#")  # new slide, new line, TITLE --- Append is used to add a value at the end of the string
         slide_text.append(slide.shapes.title.text)
@@ -40,7 +46,7 @@ def pptx_extract(pres_name):
                     
                 elif type(plc)==type(image_type_plc):
                     n=n+1
-                    figure_extract(plc, slide_text, n)
+                    figure_extract(plc, slide_text, n, title)
                 else:
                     slide_text.append("***MISSING OBJECT*** insert manually \n")
                     continue
@@ -60,12 +66,12 @@ def pptx_extract(pres_name):
                     
                 elif type(shape)==type(image_type_shp): # <class 'pptx.shapes.placeholder.PlaceholderPicture'>
                     n=n+1
-                    figure_extract(shape, slide_text, n)
+                    figure_extract(shape, slide_text, n, title)
                 else:
                     slide_text.append("***MISSING OBJECT*** insert manually \n")
                     continue
 
     
-    with open("_presentations/"+prs.core_properties.title+".html","w") as presentation_file:
+    with open("_presentations/"+filename+".html","w") as presentation_file:
         presentation_file.writelines(slide_text)
 
