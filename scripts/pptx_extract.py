@@ -4,6 +4,7 @@ def pptx_extract(path,filename):
     from figure_extract import figure_extract
     from table_extract import table_extract
 
+    import os
     from pathlib import Path
 
 
@@ -17,7 +18,8 @@ def pptx_extract(path,filename):
 
     author = prs.core_properties.author
     #title = prs.core_properties.title
-    title = filename
+    title, file_extension = os.path.splitext(filename)
+    
     slide_text = ['---','\n','layout: presentation','\n','author: ', author,'\n','title: ',title]
 
     Path("_presentations/figures/"+title).mkdir(parents=True, exist_ok=True) #check if destination folder for pictures exists and/or creates it
@@ -72,6 +74,6 @@ def pptx_extract(path,filename):
                     continue
 
     
-    with open("_presentations/"+filename+".html","w") as presentation_file:
+    with open("_presentations/"+title+".html","w") as presentation_file:
         presentation_file.writelines(slide_text)
 
