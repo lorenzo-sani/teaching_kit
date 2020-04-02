@@ -1,0 +1,922 @@
+---
+layout: presentation
+author: Ioannis Pappis
+title: ppt_demo_2.pptx
+---
+#Introduction to linear optimisation and OSeMOSYS
+
+
+Francesco Gardumi and Youssef Almulla
+
+almulla@kth.se   
+
+MJ2380/MJ2381 – Introduction to Energy Systems Analysis and Applications
+
+Lecture 2
+
+2020-01-20
+---
+#Course overview
+
+
+MJ2380-2381 2020
+
+
+
+Introduction
+
+Model development
+
+Beyond the energy system
+
+Lec3: Modelling aspects of CLEWs
+
+Lec1: Intro to Energy Systems Analysis and modelling tools
+
+Lab 2: 
+
+RES and temporal representation
+
+Lab 3, 4 and 5:
+
+Structuring a Simple Model
+
+Lec2: Optimisation models and OSeMOSYS
+
+Scenario analysis
+
+Lec4: Normative, descriptive, explorative scenarios
+
+Applications
+
+Lec5: Energy systems analysis in real life
+
+Lab 6:
+
+Adding elements of CLEWs
+
+
+
+
+
+
+
+
+
+
+
+PRO 1
+
+PRO 2
+
+PRO 3
+
+PRO 4
+
+PRO 5
+
+Lab 1: 
+
+Basics of linear programming
+
+
+
+P/F quiz
+---
+#Throughout the course
+
+
+Please read carefully the following documents on Canvas
+
+MJ2380/MJ2381 - Course description deliverables and grading
+
+MJ2380/MJ2381 - Course schedule
+
+MJ2380 - Project description
+
+
+
+Please keep the Canvas notifications on
+
+
+
+If after having done (1) and (2) you still have questions, please contact: 
+
+		Francesco Gardumi – gardumi@kth.se  
+
+
+
+
+
+
+---
+#Your feedback is important
+
+
+Right after each lecture, there will be a quick evaluation on Canvas with only two subjects
+
+Rate the lecture
+
+Comment on the content and the lecturer
+
+
+
+
+
+
+---
+#Contents
+
+
+
+
+Optimisation models
+
+OSeMOSYS: the Open Source energy Modelling System
+
+Interfaces for OSeMOSYS
+
+Interpreting modelling results
+
+
+
+
+
+
+
+
+
+
+---
+#Types of modelling tools
+***MISSING OBJECT*** insert manually 
+
+
+Draw on macroeconomic relationships and cross-sectoral dependencies.***MISSING OBJECT*** insert manually 
+
+
+Provide a more detailed technological representation of the system.
+
+Resource – to –use representation.***MISSING OBJECT*** insert manually 
+
+
+statistical analysis of historical time-series 
+
+interrelations between various sub-sectors of the economy 
+
+economy wide general equilibrium between sectoral demands and supplies 
+
+Projections based on socio-economic, technology and demographics
+
+Accounting + rules (for dispatch, investments, …)
+
+Calculate energy systems attributes driven by an objective function.
+
+Mix of two or more of the above.
+
+
+
+
+
+
+
+
+---
+#Optimisation models
+
+
+Study of decision problems in which one seeks to minimise or maximise a function by systematically choosing the values of variables within their allowed sets. 
+
+
+
+
+
+Basic variables
+
+Decision: describe alternative courses of action and are determined by decision makers (e.g. investments in new power plants);
+
+Parameters: factors that affect the results. They are determined by the elements of the system and can be called “constraints of the problem” if they limit decision makers (e.g. O&M costs, emission caps, max capacity additions, fuel reserves).
+
+Result: represent model outputs; they are frequently described by objective functions, such as profit (max) and cost (min or least-cost).
+
+
+---
+#Characteristics of optimisation models
+
+
+Common (but not exclusive!) characteristics:
+
+Perfect competition: all players in the market compete against each other and supply their electricity at their marginal cost (”price takers”);
+
+Perfect information: the market players make decisions with perfect information about parameters influencing them (e.g. all costs of all power plants known);
+
+Perfect foresight: sub-set of the above; market players are assumed to know everything that will happen in the future (e.g. how demand evolves);
+
+Dynamic: it gives solutions for different points in time (i.e. not only a snapshot); 
+
+Economically-rational consumer behaviour: technologies with the cheapest life-cycle costs are invested in.
+
+
+
+
+
+
+---
+#Characteristics of optimisation models
+
+
+One category is Partial Equilibrium models: they calculate the economic equilibrium of supply and demand within the sector being modelled (e.g. energy and power sectors).
+
+
+
+
+<img src=figures/1_image.emf position=absolute top=227.13874015748033px left=192.20425196850394px width=497.40866141732283px height=267.31629921259844px />
+
+
+---
+#Types of optimisation models
+
+
+Linear programming (LP)
+
+Type of optimisation in which the objective function and constraints are all linear. It is the base of other optimisation models. Mixed-Integer Linear Programming (MILP) is a subset.
+
+Nonlinear programming (NLP)
+
+Similar to LP, but where some of the constraints and/or the objective function are nonlinear.
+
+Multi-objective programming (MOP)
+
+Process in which two or more conflicting objectives are optimised subject to certain constraints. 
+
+Bi-level programming (BLP) and multi-level programming (MLP)
+
+Complex optimisation problems where one problem is embedded in another one (a BLP is a two-level MLP). 
+
+
+
+
+
+
+
+
+---
+#Why using linear optimisation models in energy systems analysis?
+
+
+to identify least-cost energy systems
+
+to identify cost-effective responses to restrictions on emissions
+
+to perform prospective analysis of long-term energy balances under different scenarios
+
+to evaluate new technologies and priorities for R&D
+
+to evaluate the effects of regulations, taxes, and subsidies
+
+to project inventories of greenhouse gas emissions
+
+to estimate the value of regional cooperation
+
+
+
+
+
+
+
+Investigate scenarios (possible futures);
+
+Explore alternatives to business as usual practices;
+
+Inform decisions (policy and strategic planning)
+
+
+
+
+
+
+---
+#Examples of energy modelling tools (model generators) using linear optimisation
+
+
+Technology explicit, dynamic partial equilibrium models of energy markets.
+
+Differ in technical features and  properties  (time length, timeslices definition, etc)
+
+MARKAL and TIMES  are developed by IEA-ETSAP.
+
+
+
+
+
+MARKAL
+
+(MARKet ALlocation)
+
+
+
+TIMES 
+
+(The Integrated MARKAL-EFOM System)
+
+
+
+MESSAGE
+
+(Model for Energy Supply System Alternatives and their General Environmental Impacts)
+
+OSeMOSYS
+
+(Open Source Energy Modelling System)
+
+Flexible framework for the comprehensive assessment of energy challenges
+
+Development of energy scenarios and  identification of socioeconomic and technological response strategies
+
+The mathematical formulation ensures that the flows are consistent: demand is met, inflows equal outflows and constraints are not exceeded.
+
+MESSAGE is developed by IIASA/IAEA.
+
+Open source long-term energy model generator based on LP principle
+
+Flexible and organised in blocks; user has access to the code and can implement changes to fit its problem
+
+Developed  by KTH-dESA and partners 
+
+
+---
+#Examples of the use of model generators
+
+
+
+
+
+
+MARKAL: UK MARKAL
+
+TIMES: UKTM-UCL
+<img src=figures/2_image.png position=absolute top=207.2235433070866px left=42.38220472440945px width=456.75px height=280.5px />
+
+
+
+TIMES is now preferred as a model generator (more flexible and internationally developed)
+
+Opportunity to undergo a comprehensive review and revision of UK MARKAL’s design, underlying data and assumptions.
+
+UKTM-UCL introduction video
+
+https://youtu.be/tOV5Q0e_RW0
+
+
+<img src=figures/3_image.png position=absolute top=412.86291338582674px left=637.1326771653544px width=124.01023622047244px height=72.33929133858268px />
+
+
+---
+#Examples of the use of model generators
+
+
+
+
+
+
+MESSAGE
+
+Among others, MESSAGE is used in the assessments and special reports of the IPCC and the Global Energy Assessment (GEA).
+
+Used to generate one of the four Representative Concentration Pathways (RCPs). RCP8.5 is being  used to estimate future climate change in the context of the IPCC 5th Assessment Report (AR5).
+
+RCP Database  - Comparison of  RCP world CO2 emissions  (MESSAGE - RCP8.5).
+
+(source: http://tntcat.iiasa.ac.at/RcpDb/dsd?Action=htmlpage&page=compare)
+
+
+<img src=figures/4_image.png position=absolute top=190.13614173228348px left=475.37535433070866px width=463.3572440944882px height=206.2103937007874px />
+
+
+---
+#OSeMOSYS Applications
+
+
+OSeMOSYS
+
+IRENA African Power Pools: Planning and Prospects of Renewable Energy
+
+IEA WEO 2014 – Africa Energy Outlook
+
+WB – Enhancing the  Climate Resilience of African Infrastructure
+<img src=figures/5_image.png position=absolute top=37.81708661417323px left=497.4545669291339px width=430.2954330708661px height=214.18291338582677px />
+<img src=figures/6_image.png position=absolute top=282.99181102362206px left=497.5908661417323px width=142.22724409448819px height=205.18031496062991px />
+<img src=figures/7_image.png position=absolute top=282.99181102362206px left=642.0px width=144.0px height=205.18031496062991px />
+<img src=figures/8_image.png position=absolute top=282.99181102362206px left=789.2728346456693px width=141.75px height=205.18031496062991px />
+
+UNECE transboundary nexus assessments
+
+        (Sava and Drina)
+
+
+
+
+
+
+---
+#OSeMOSYS Applications
+
+
+OSeMOSYS
+
+TEMBA – The Energy Model Base for Africa
+
+SAMBA – South America Model Base
+
+CLEWS applications (GLUCOSE, Uganda, Nicaragua, Zimbabwe, Mauritius, Kenya, Bolivia, …)
+
+Among UNDESA modelling tools for sustainable development policies.  
+<img src=figures/9_image.png position=absolute top=129.15661417322835px left=492.3499212598425px width=185.65007874015748px height=185.65007874015748px />
+<img src=figures/10_image.png position=absolute top=331.75503937007875px left=551.7892913385826px width=330.38062992125987px height=151.79653543307086px />
+<img src=figures/11_image.png position=absolute top=148.49031496062992px left=688.9483464566929px width=247.52070866141733px height=143.96614173228346px />
+
+
+
+
+
+
+---
+#OSeMOSYSthe Open Source energy MOdelling SYStem
+
+---
+#Imagine yourselves in the shoes of...
+
+
+
+<img src=figures/12_image.jpeg position=absolute top=149.86251968503936px left=279.4548818897638px width=398.5451181102362px height=298.9088188976378px />
+
+
+
+
+---
+#OSeMOSYS Applications
+
+<img src=figures/13_image.png position=absolute top=125.72637795275591px left=152.4px width=672.7133070866141px height=371.4628346456693px />
+
+
+
+
+
+
+---
+#OSeMOSYS in the modelling suite
+
+
+
+
+
+
+
+
+***MISSING OBJECT*** insert manually 
+
+---
+#OSeMOSYS
+
+
+www.osemosys.org
+
+Howells, M., et al. (2011). OSeMOSYS: The Open Source Energy Modeling System: An introduction to its ethos, structure and development, Energy Policy, 39(10), p.5850-5870.
+
+Model generator converting the energy system structure represented by equations into a matrix to be solved by specific solvers
+
+
+
+Linear optimisation
+
+Freely available and Open source
+
+Deterministic
+
+Dynamic
+
+Perfect foresight
+
+Paradigm comparable to MESSAGE and TIMES
+<img src=figures/14_image.png position=absolute top=306.78582677165355px left=657.8629921259843px width=236.13700787401575px height=185.71834645669293px />
+
+
+
+
+
+
+---
+#What does OSeMOSYS do?
+
+
+
+
+It determines the energy system configuration with the minimum total discounted cost for a time domain of decades, constrained by:
+
+
+
+Demand for energy (e.g. electricity, heating, cooling, km-passengers, etc.) that needs to be met
+
+Available technologies and their techno-economic characteristics
+
+Emission taxations and generation targets (e.g. renewables)
+
+Other constraints (e.g. ramping capability, availability of resources, investment decisions, etc.)
+
+
+
+
+---
+#What does OSeMOSYS do?
+
+
+Technologies compete to gain a share in the energy supply, based on:
+
+
+
+a)their characteristics (e.g. cost, life time, efficiency etc);
+
+
+
+b) other constraints  (e.g. demand, min renewable generation, emissions, use of resources, etc).
+
+
+
+
+<img src=figures/15_image.JPG position=absolute top=130.6351968503937px left=299.1075590551181px width=648.2798425196851px height=398.6148031496063px />
+
+
+
+
+---
+#OSeMOSYS Structure – Blocks of functionality
+
+
+
+
+Three levels of abstraction: Plain English description, Mathematical formulation and Code formulation
+
+Ref: OSeMOSYS Manual - https://osemosys.readthedocs.io/en/latest/ 
+
+
+
+Objective
+
+To estimate the lowest Net Present Value (NPV) of an energy system to meet given demand(s) for energy
+
+Costs
+
+Account for the costs incurred by each technology in each year and in each region
+
+Capacity adequacy
+
+There must be enough capacity for each technology in order to meet its energy use or production requirements:
+
+Capacity adequacy A: Each time slice / Capacity adequacy B: Each year
+
+Storage
+
+It adds independent energy balances and constraints for storage options.
+
+
+
+
+---
+#OSeMOSYS Structure – Blocks of functionality 
+
+
+
+
+Energy balance
+
+Operation levels are calculated for each time slice and each year. The production, use and demand must be feasible at each timeslice and annually
+
+Energy balance A: Each time slice / Energy balance B: Each year
+
+Constraints
+
+Maximum/minimum limit on capacity of a technology allowed for a year or total period and a region
+
+Maximum/minimum limit on new capacities of a technology for a year and a region
+
+Maximum/minimum limit on activity of a technology for a year or total period and a region
+
+There must be enough capacity to provide a reserve margin (for specified technologies)
+
+Emissions
+
+The extent to which pollutants are emitted is determined by multiplying “emissions per unit of activity” and the annual activity of a technology
+
+
+
+
+---
+#Mathematical Formulation of OSeMOSYS
+
+
+
+
+
+
+
+---
+#Example of Mathematical Formulation of OSeMOSYS
+
+<img src=figures/16_image.png position=absolute top=129.95023622047245px left=103.2096062992126px width=735.241968503937px height=355.49133858267714px />
+
+
+
+
+
+
+---
+#Example of Code of OSeMOSYS
+
+<img src=figures/17_image.png position=absolute top=128.40944881889763px left=128.2204724409449px width=703.5590551181102px height=340.15748031496065px />
+
+
+
+
+
+
+---
+#OSeMOSYS – Key terms 
+
+
+Five key terms in OSeMOSYS: 
+
+Sets: Input, constant for all scenarios
+
+Parameters: Input, can differ between scenarios
+
+Variables: Modelling outputs
+
+Constraints:  can be equalities or inequalities the limit the solution space and should be satisfied all the time. 
+
+Objective Function: of the linear programing problem (to minimize cost)
+
+
+
+Two versions of the code: 
+
+Long code: easy to read but requires larger matrix size and computational time.
+
+Short code: combines some of the intermediate equations to reduce the matrix size and computational time.
+
+
+
+
+
+
+---
+#Interfaces for OSeMOSYS
+
+---
+#Interfaces for OSeMOSYS
+
+
+MoManI – Model Management Infrastructure
+
+LEAP – the Long-range Energy Alternatives Planning system
+
+Run an input file directly on the command line, e.g, using Notepad++ to write input file and a compatible solver
+
+
+
+
+
+
+---
+#Interfaces for OSeMOSYS
+
+
+MoManI – Model Management Infrastructure
+
+LEAP – the Long-range Energy Alternatives Planning system
+
+Run an input file directly on the command line, e.g, using Notepad++ to write input file and a compatible solver
+
+
+
+
+
+
+
+
+---
+#Interfaces for OSeMOSYS: MoManI
+
+
+
+<img src=figures/18_image.png position=absolute top=108.11251968503937px left=161.73629921259842px width=599.295905511811px height=379.3637795275591px />
+
+http://courses.momaniweb.com/#/models 
+
+
+
+
+---
+#Input parameters
+
+
+Data collection
+
+
+
+
+
+Data pre-processing
+
+
+
+Model calibration
+
+
+
+
+
+
+
+
+
+
+
+
+
+Electricity demand projections
+
+Primary resources potentials
+
+Existing capacity
+
+Technology costs and characteristics
+
+Country/region specific constraints
+
+Fuel prices
+
+
+
+Discretization of demand curves
+
+Regression analyses where projections are not available
+
+Etc…
+
+
+
+I.e. set the starting year of the model as a past year for which actual data is available. From this starting point all that follows depends!
+
+
+
+
+---
+#Interpreting modelling results
+
+---
+#Interpreting modelling results
+
+
+The results provide insights on questions such as:
+
+
+
+Which technologies are phasing out? By when? 
+
+What are the optimal investments in new technologies to meet the demand in the future? When is it best to invest?
+
+What are the key generation technologies in the total energy mix? 
+
+Which capacities are NOT being utilized? Why?
+
+What costs will the energy system incur?
+
+
+
+
+
+
+---
+#Interpreting modelling results
+
+
+
+
+What needs to be done and what will be the costs to supply modern energy sources to remote areas?  
+
+What if environmental regulations are made more stringent?  
+
+What needs to be done to increase the share of renewable technologies? 
+
+Should the electricity import be allowed? 
+
+Should the existing nuclear facilities be closed down?
+
+Can energy conservation program help in reducing cost of energy supply?
+<img src=figures/19_image.jpg position=absolute top=300.05141732283465px left=628.0992125984252px width=257.3923622047244px height=171.59488188976377px />
+<img src=figures/20_image.jpg position=absolute top=131.1792125984252px left=668.4179527559055px width=176.7547244094488px height=163.6243307086614px />
+
+
+
+
+---
+#Representative OSeMOSYS results
+
+
+Year
+
+
+<img src=figures/21_image.png position=absolute top=184.0048031496063px left=157.70944881889764px width=681.2906299212599px height=281.965905511811px />
+
+Electricity Generation (PJ)
+
+Hydro and CCGT most competitive***MISSING OBJECT*** insert manually 
+
+
+Initial capacity of COAL PP phased out at end of life
+
+
+
+
+
+
+---
+#Representative OSeMOSYS results
+
+
+Year
+
+
+<img src=figures/22_image.png position=absolute top=182.01614173228347px left=154.31952755905513px width=684.4190551181102px height=283.1812598425197px />
+
+Electricity Generation (PJ)
+
+More generation from COAL PP, less reliance on HYDRO
+
+What happens in a climate ‘water scarcity’ scenario?***MISSING OBJECT*** insert manually 
+
+
+
+
+
+---
+#Key take away messages
+
+---
+#Key take away messages
+
+
+Keywords
+
+Optimisation, Model generator, Linear Programming, OSeMOSYS, MoManI
+
+
+
+Messages
+
+Different optimisation techniques, e.g. LP, MILP, NLP
+
+Common characteristics of optimisation model generators: perfect competition, information and foresight; dynamic; rational behaviour
+
+Sub-set: partial equilibrium models
+
+OSeMOSYS is a long-term, perfect foresight, dynamic cost-optimisation (not simulation!) model generator
+
+Inputs to OSeMOSYS are: Sets and Parameters while outputs are called variables. 
+
+MoManI is an interface used for OSeMOSYS. Do not confuse the two!
+
+
+
+
+
+
+
+
+---
+#Reading material
+
+
+OSeMOSYS structure (Howells et al., 2011): https://www.sciencedirect.com/science/article/pii/S0301421511004897 
+
+OSeMOSYS code: https://github.com/KTH-dESA/OSeMOSYS/tree/master/OSeMOSYS_GNU_MathProg 
+
+OSeMOSYS user manual: https://osemosys.readthedocs.io/en/latest/ 
+
+MoManI user manual: http://www.osemosys.org/uploads/1/8/5/0/18504136/momani_training_manual-_rev180601.pdf 
+
+
+
+
+
+
+---
+#Thank you
+
+
+Francesco Gardumi and Youssef Almulla
+
+
+
+
+
