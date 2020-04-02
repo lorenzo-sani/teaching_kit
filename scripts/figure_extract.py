@@ -7,4 +7,4 @@ def figure_extract(shape, text, n, title):
     height=str(shape.height.pt)
     top=str(shape.top.pt)
     left=str(shape.left.pt)
-    text.append("\n<img src=figures/"+name+" position=absolute top="+top+"px left="+left+"px width="+width+"px height="+height+"px />")
+    text.append("\n<img src=figures/"+title+"/"+name+" position=absolute top="+top+"px left="+left+"px width="+width+"px height="+height+"px />")
