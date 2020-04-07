@@ -19,7 +19,7 @@ Before installing any package in Python it is recommended to create a new enviro
 1. ```conda create -n POJECT NAME```
 2. ```conda initiate PROJECT NAME```
 
-In case of working from Windows it is useful  setting up a Linux subsystem
+In case of working from Windows it is useful  setting up a Linux subsystem.
 
 ## How to use
 
