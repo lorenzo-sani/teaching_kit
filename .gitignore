@@ -8,5 +8,6 @@ scripts/figure.py
 scripts/tables.py
 scripts/pptx_extract_shapes.py
 scripts/test.py
+scripts/_pycache_
 .pyc
 
