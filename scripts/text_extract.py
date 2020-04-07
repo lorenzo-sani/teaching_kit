@@ -20,27 +20,18 @@ def text_extract(shape, text, n):
         except: skip=1
 
         if l==1 and skip==0 and isinstance(paragraph.runs[0].font.size, NoneType):
-            size = 24
+            size = 18
         elif l==1 and skip==0:
             size = paragraph.runs[0].font.size.pt
-        else: size=24
-            
+        elif l==1 and skip==1:
+            size = 18
+
+
+        text.append("<div style=font-size:"+str(size)+"px>")
+
         for run in paragraph.runs:
-            #l=l+1
-            #if l==1 and type(run.font.size) == type(NoneType):
-            #    size = 24
-            #elif l==1:
-            #    size = run.font.size.pt
-            #if l==1 and type(run.font.size) == type(NoneType):
-            #    size = 24 
-            #elif l==1: 
-            #    size = run.font.size.pt
-               
-            #if int(size)==int:
-             #   size = size /12700
-            #else:
-             #   size = 24 
-            text.append("<div style=font-size:"+str(size)+"px>")
+            
+            
             if run.font.bold:
                 text.append("<b>"+run.text+"</b>")
             elif run.font.italic:

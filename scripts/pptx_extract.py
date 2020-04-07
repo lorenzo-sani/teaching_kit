@@ -34,15 +34,11 @@ def pptx_extract(path,filename):
         n_shp=len(slide.shapes)
                 
         for shape in slide.shapes:
-            if shape.has_text_frame: #and not shape == slide.shapes.title:
-                #for paragraph in shape.text_frame.paragraphs:
-                #    slide_text.append("\n\n")
-                #    for run in paragraph.runs:
-                #        slide_text.append(run.text)
+            if shape.has_text_frame and not shape == slide.shapes.title:
                 m=m+1
                 text_extract(shape, slide_text, m)
-            #elif shape == slide.shapes.title:
-            ##    continue
+            elif shape == slide.shapes.title:
+                 continue
             elif shape.has_table:
                 table_extract(shape, slide_text)
             elif shape.has_chart:

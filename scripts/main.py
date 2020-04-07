@@ -9,13 +9,11 @@ filenames = []
 for file in os.listdir(folder):
     
     filename = os.fsdecode(file)
-    print(filename)
-    #if filename == 'ppt_figure.pptx' or filename == 'ppt_table.pptx':
-    #    print("skip "+filename)
-     #   continue
-    #elif filename == "ppt_demo.pptx":
-     #  print(filename)
-       #pptx_extract(path,filename)
+    if filename == 'ppt_figure.pptx' or filename == 'ppt_table.pptx':
+        print("skip "+filename)
+        continue
+    else:
+        pptx_extract(path,filename)
 
 print("converted all presentations in "+path+" to markdown presentations")
     
