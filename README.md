@@ -24,10 +24,11 @@ In case of working from Windows it is useful  setting up a Linux subsystem.
 ## How to use
 
 ### First steps 
-1. Clone branch ```gh-pages``` from repository ```git clone -b gh-pages git@github.com/KTH-dESA/teaching_kit```
-2. Import the powerpoint presentations in ```files/ppt_presentations```
-3. Run the script ```main.py``` to convert powerpoint presentations to markdown files, type ```python scripts/main.py```
-4. You can preview the website locally at http://127.0.0.1:4000/teaching_kit/ typing ```jekyll serve```(for the first time use ```bundle exec jekyll serve```)
+1. Clone repository ```git clone https://github.com/KTH-dESA/teaching_kitt```
+
+1. Import the powerpoint presentations in ```files/ppt_presentations```
+1. Run the script ```main.py``` to convert powerpoint presentations to markdown files, type ```python scripts/main.py```
+1. You can preview the website locally at http://127.0.0.1:4000/teaching_kit/ typing ```jekyll serve``` (for the first time use ```bundle exec jekyll serve```)
 
 ### Upload changes
 1. Check which files would be uploaded with ```git status```
