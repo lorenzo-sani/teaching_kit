@@ -9,7 +9,6 @@ filenames = []
 for file in os.listdir(folder):
     
     filename = os.fsdecode(file)
-    
     if filename == 'ppt_figure.pptx' or filename == 'ppt_table.pptx':
         print("skip "+filename)
         continue
