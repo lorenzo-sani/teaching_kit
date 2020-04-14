@@ -5,11 +5,13 @@ layout: home
 
 # Welcome to OSeMOSYS training kit
 
-## Module 1: Introduction
+#### This is a demo website which contains some training material on OSeMOSYS 
 
-This module contains an introduction to OSeMOSYS, linear optimisation and the basic concepts needed to built and energy system model.
+## Content
 
-### Presentations:
+{% include content_list.md %}
 
-{% include presentations-list.html %}
+## Tags:
+
+{% include tags_list.md %}
 

@@ -9,7 +9,7 @@ def pptx_extract(path,filename):
     import os
     from pathlib import Path
 
-
+    # Read presentation
     prs = Presentation(path+"/"+filename)
 
     slide_text = []
@@ -19,20 +19,31 @@ def pptx_extract(path,filename):
     author = prs.core_properties.author
     title, file_extension = os.path.splitext(filename)
     
-    slide_text = ['---','\n','layout: presentation','\n','author: ', author,'\n','title: ',title]
+    # Assign tags to presentation
+    print("- assign tags to the presentation "+title+", press 0 when finished")
+    tag=[]
+    t=[]
+    while t!="0":
+        t = input("type tag: ")
+        if t == "0" or t=="":
+            continue
+        else:
+            tag.append(t)
+    
+
+    # Initialize text
+    slide_text = ['---','\n','layout: presentation','\n','author: ', author,'\n','title: ',title,'\n','tag: ',str(tag)]
 
     Path("_presentations/figures/"+title).mkdir(parents=True, exist_ok=True) #check if destination folder for pictures exists and/or creates it
 
+    # Extract and convert
     for slide in prs.slides:
         slide_text.append("\n---\n#")  # new slide, new line, TITLE --- Append is used to add a value at the end of the string
         try: slide_text.append(slide.shapes.title.text)
         except: slide_text.append("")
         
         slide_text.append("\n")
-        
-        n_plc=len(slide.placeholders)
-        n_shp=len(slide.shapes)
-                
+                              
         for shape in slide.shapes:
             if shape.has_text_frame and not shape == slide.shapes.title:
                 m=m+1
@@ -51,7 +62,7 @@ def pptx_extract(path,filename):
                 slide_text.append("***MISSING OBJECT*** insert manually \n")
                 continue
 
-    
-    with open("_presentations/"+title+".html","w") as presentation_file:
+    # Save Slide
+    with open("_presentations/modules/"+title+".html","w") as presentation_file:
         presentation_file.writelines(slide_text)
 
