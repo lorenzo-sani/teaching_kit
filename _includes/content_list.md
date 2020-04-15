@@ -2,20 +2,22 @@
 Here is the list of the lectures available: 
 
 
-- [Lecture_1_demo](http://127.0.0.1:4000/teaching_kit/presentations/Lecture_1_demo.html)
-- [Lecture_2_demo](http://127.0.0.1:4000/teaching_kit/presentations/Lecture_2_demo.html)
-- [Climate land energy water modelling](http://127.0.0.1:4000/teaching_kit/presentations/lecture_clews.html)
-- [All about Water](http://127.0.0.1:4000/teaching_kit/presentations/lecture_water.html)
+- [Lecture_1_demo](presentations/Lecture_1_demo.html) 
+- [Lecture_2_demo](presentations/Lecture_2_demo.html) 
+- [Climate land energy water modelling](presentations/lecture_clews.html) 
+- [Lecture_clews_demo](presentations/Lecture_clews_demo.html) 
+- [All about Water](presentations/lecture_water.html) 
+- [Lecture_water_demo](presentations/Lecture_water_demo.html) 
 
 
 ### Modules 
 Here is the list of the modules available: 
 
 
-- [climate](http://127.0.0.1:4000/teaching_kit/presentations/climate.html)
-- [energy](http://127.0.0.1:4000/teaching_kit/presentations/energy.html)
-- [land](http://127.0.0.1:4000/teaching_kit/presentations/land.html)
-- [ppt_demo](http://127.0.0.1:4000/teaching_kit/presentations/ppt_demo.html)
-- [ppt_demo_2](http://127.0.0.1:4000/teaching_kit/presentations/ppt_demo_2.html)
-- [teaching_kit](http://127.0.0.1:4000/teaching_kit/presentations/teaching_kit.html)
-- [water](http://127.0.0.1:4000/teaching_kit/presentations/water.html)
+- [climate](presentations/modules/climate.html)
+- [energy](presentations/modules/energy.html)
+- [land](presentations/modules/land.html)
+- [ppt_demo](presentations/modules/ppt_demo.html)
+- [ppt_demo_2](presentations/modules/ppt_demo_2.html)
+- [teaching_kit](presentations/modules/teaching_kit.html)
+- [water](presentations/modules/water.html)

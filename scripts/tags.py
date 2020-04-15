@@ -73,7 +73,7 @@ print("\nThis is the list of tags used: "+str(tag_list))
 
 # Create "tag_page.md" with a list of the tags used
 text=[]
-text.append("### Here is the list of available tags and related presentations \n")
+text.append("### Here is the list of the tags used and the related modules \n")
 for t in tag_list:
     text.append("\n- ***"+t+":***")
     i=0
@@ -85,7 +85,7 @@ for t in tag_list:
             if t in prs["tag"]:
                 i=i+1
                 if i!=1: text.append(",")
-                text.append(" ["+title+"](http://127.0.0.1:4000/teaching_kit/presentations/"+filename+")")
+                text.append(" ["+title+"](presentations/modules/"+filename+")")
             else: continue
     
     with open("_includes/tags_list.md","w") as file:

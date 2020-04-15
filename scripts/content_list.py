@@ -9,8 +9,7 @@ def content_list():
 
     text = []
     folder = os.fsencode(path)
-    filenames = []
-
+    
     # LECTURES
     text.append("### Lectures \nHere is the list of the lectures available: \n\n")
     for file in os.listdir(folder):
@@ -23,7 +22,7 @@ def content_list():
                 prs_title = prs['title']
             except:
                 prs_title = title
-            text.append("\n- ["+prs_title+"](http://127.0.0.1:4000/teaching_kit/presentations/"+filename+")")
+            text.append("\n- ["+prs_title+"](presentations/"+filename+") ") 
 
     # MODULES
     text.append("\n\n\n### Modules \nHere is the list of the modules available: \n\n")
@@ -39,7 +38,7 @@ def content_list():
                 prs_title = prs['title']
             except:
                 prs_title = title    
-            text.append("\n- ["+title+"](http://127.0.0.1:4000/teaching_kit/presentations/"+filename+")")
+            text.append("\n- ["+title+"](presentations/modules/"+filename+")")
 
     with open("_includes/content_list.md","w") as file:
             file.writelines(text)
