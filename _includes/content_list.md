@@ -4,9 +4,8 @@ Here is the list of the lectures available:
 
 - [Lecture_1_demo](presentations/Lecture_1_demo.html) 
 - [Lecture_2_demo](presentations/Lecture_2_demo.html) 
-- [Climate land energy water modelling](presentations/lecture_clews.html) 
 - [Lecture_clews_demo](presentations/Lecture_clews_demo.html) 
-- [All about Water](presentations/lecture_water.html) 
+- [lecture_ppt_demo](presentations/lecture_ppt_demo.html) 
 - [Lecture_water_demo](presentations/Lecture_water_demo.html) 
 
 
